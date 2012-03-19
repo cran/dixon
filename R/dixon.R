@@ -1,7 +1,7 @@
 `dixon` <-
 function (datos, nsim = 99, fortran=TRUE) 
 {
-#   info = mNNinfo(xy = datos[, 1:2], label = datos[, 3])
+    datos <- as.matrix(datos) #19/03/2012: in response to nndistG changes in splancs [storage.mode(pts) <- "double"]
     info = mNNinfoc(xy = datos[, 1:2], label = datos[, 3], fortran=fortran)
     datos.test = mNNtest(info)
     Ni = rowSums(info$ON)
