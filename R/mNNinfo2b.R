@@ -14,7 +14,7 @@ function (n, R, Q)
     }
    
                     
-    ans <- .Fortran(name='dixonloop', k=as.integer(k), N=as.double(N),
+    ans <- .Fortran('dixonloop', k=as.integer(k), N=as.double(N),
                     R=as.double(R), Q= as.double(Q), SP=as.double(SP),
                     VN=as.integer(VN), VarN=as.double(VarN), EN=as.double(EN),
                     PACKAGE="dixon")                    
