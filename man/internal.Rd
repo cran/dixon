@@ -20,6 +20,5 @@ NNid(xy, splancs = TRUE)
 \details{
 These fucntions are called by \code{\link{dixon}} and are usually not to be called by the user.
 }
-\author{ Philip M. Dixon \url{http://www.public.iastate.edu/~pdixon/ and Marcelino de la Cruz}
-}
+\author{ Philip M. Dixon and Marcelino de la Cruz}
 \keyword{ internal }

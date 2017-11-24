@@ -33,10 +33,7 @@ examples of a marked spatial point pattern.
 	}
   }
 }
-\source{
-  Philip Dixon's personal web page \url{http://www.public.iastate.edu/~pdixon/}
-  
-}
+
 \references{
   Dixon, P.M. 2002. Nearest-neighbor contingency table analysis of spatial 
 segregation for several species. \emph{Ecoscience}, \bold{9}(2): 142-151.

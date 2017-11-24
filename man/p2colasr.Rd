@@ -20,6 +20,6 @@ for parameters in discrete distributions. \emph{Biometrics}, \bold{57}: 963-971.
 Dixon, P.M. 2002. Nearest-neighbor contingency table analysis
  of spatial segregation for several species. \emph{Ecoscience}, \bold{9}(2): 142-151.\cr\cr
  }
-\author{Marcelino de la Cruz Rot. \email{marcelino.delacruz@upm.es} }
+\author{Marcelino de la Cruz Rot}
 \note{ This function is usually not to be called by the user. It is internally used by \code{\link{dixon}}.}
 \keyword{ distribution }
