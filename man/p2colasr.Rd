@@ -6,12 +6,12 @@
 	Dixon's (2002:145) description of the method of Agresti & Min (2001).  
 }
 \usage{
-p2colasr(Z, nsim = length(Z))
+p2colasr(Z)
 }
 \arguments{
   \item{Z}{ \code{vector} with the observed Z-score in the first position and 
 		all the simulated values behind. }
-  \item{nsim}{ Number of simulated values. }
+
 }
 \value{P-value of the two-sided hypothesis test}
 \references{ 

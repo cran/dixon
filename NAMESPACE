@@ -5,10 +5,9 @@ useDynLib(dixon, .registration = TRUE)
 export("dixon")
 
 importFrom("stats", "pchisq", "pnorm")
+importFrom("splancs", "nndistG")
 
-# Import all packages listed as Imports or Depends
-# ToDo: "importFrom" only required functions 
-import(
-  splancs,
-  spatstat
-)
+importFrom("spatstat.geom", "progressreport")
+
+# delete when the dust has settled
+import(spatstat)

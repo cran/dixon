@@ -23,14 +23,14 @@ dixon(datos, nsim = 99, fortran =TRUE)
   \item{Z }{Z-score for testing whether the observed count equals the expected count.}
   \item{S }{Segregation measure.}
   \item{pZas }{P-values based on the asymptotic normal distribution of the Z statistic.}
-  \item{pZr }{If nsim !=0, p-values of the Z-score based on the randomization distribution.}
+  \item{pNr }{If nsim !=0, p-values of the observed counts based on the randomization distribution.}
   \item{C }{Overall test of random labelling.}
   \item{Ci }{Species-specific test of random labelling.}
   \item{pCas }{P-value of the overall test from the asymptotic chi-square distribution with the appropriate degrees of freedom.}
   \item{pCias }{P-values of the species-specific tests from the asymptotic chi-square distribution with the appropriate degrees of freedom.}
   \item{pCr }{If nsim !=0, p-value of the overall test from the randomization distribution.}
   \item{pCir }{If nsim !=0, p-values of the species-specific tests from the randomization distribution.}
-  \item{tablaZ }{table with ON, EN, Z, S, pZas and pZr in pretty format, as in the table II of Dixon (2002).}
+  \item{tablaZ }{table with ON, EN, Z, S, pZas and pNr in pretty format, as in the table II of Dixon (2002).}
   \item{tablaC }{table with C, Ci, pCas,pCias, pCr and pCir  in pretty format, as in the table IV of Dixon (2002).}
 }
 \details{
@@ -55,8 +55,7 @@ dixon(datos, nsim = 99, fortran =TRUE)
   As a \strong{species/neighbor-specific test}, Dixon(2002) proposed the statistic
   \deqn{Z[ij] =(N[ij] -EN[ij])/sqrt(Var N[ij])}
   where \emph{j} may be the same as \emph{i} and \eqn{EN[ij]} is the expected count in the contingency table. It has an asymptotic normal distribution with mean 0 
-  and variance 1;  its asymptotic p-valure  can be obtained from the numerical evaluation of the cumulative normal distribution  or by simulation, i.e, by condicting
-  a randomization test (appropriate when the sample size is small). 
+  and variance 1;  its asymptotic p-value  can be obtained from the numerical evaluation of the cumulative normal distribution; when the sample size is small, a p-value on the observed counts in each cell  (\eqn{N[ij]}) may be obtained by simulation, i.e, by condicting a randomization test. 
      
   An \strong{overall test of random labelling} (i.e. a test that all counts in the \eqn{k} x \eqn{k} nearest-neighbor contingency table are equal to their expected counts) is based
   on the quadratic form
