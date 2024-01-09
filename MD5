@@ -1,4 +1,4 @@
-23603fa825ad6a371f5d271ea0998666 *DESCRIPTION
+e315959ba92be86cdf95c4c5753bb35e *DESCRIPTION
 a0dee78dc68424897eaf1c908635b52d *NAMESPACE
 ba08e161e142d132516836a0d3281d8d *R/NNid.R
 81cecceb517ff3c157171983ae752818 *R/check.R
@@ -10,10 +10,10 @@ ad6a5a58b2a0d63042ee5f6189f4afca *R/dixon.R
 fbdb793a4d4b7b634fab09fabb95f8aa *R/mNNtest.R
 bc1d245fee7d3a91a18dcc191fb3fcd2 *R/p2colasr.R
 6a12241751e69d863387e2a58025a2bf *data/swamp.rda
-87a2bb821965a3b18ad6183e9a1b8fc9 *inst/CITATION
-41068a5dfdb5becb7c7d4bb96d5ca235 *man/dixon.Rd
+cb4dfbf2d1ed05dece40cbfcdb0f22b8 *inst/CITATION
+946b828f5a9bbdd01f1641dc53f306f6 *man/dixon.Rd
 c051652a40621e79eac348d248d55b44 *man/internal.Rd
 4f1a1e869649c2f77b88074edad1f878 *man/p2colasr.Rd
 8791fe35bfca897ee1f463a747013050 *man/swamp.Rd
-b2d8b963c4abd0dde2ce7597bd7d42f1 *src/dixonloop.f
+7d1d7ceeee8a2b2a668ed2facf742b60 *src/dixonloop.f
 f15248da447a7201e101d45d87107bc3 *src/init.c

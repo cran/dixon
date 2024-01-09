@@ -86,7 +86,7 @@ Dixon, P.M. 2002. Nearest-neighbor contingency table analysis of spatial segrega
   Universidad Rey Juan Carlos y Caja de Ahorros del Mediterraneo, Madrid. ISBN:
   978-84-9849-308-5.} 
 }
-\author{ Philip M. Dixon (Iowa State University). Marcelino de la Cruz Rot wrote the wrapper code  and the fortran implenetation for this package.}
+\author{ Philip M. Dixon (Iowa State University). Marcelino de la Cruz Rot wrote the wrapper code  and the fortran implementation for this package.}
 \seealso{ \code{\link[ecespa]{K012}}  in the package \pkg{ecespa} for another segregation test, based in the differences of univariate and bivariate \eqn{K}-functions.}
 \note{ This function is an improvement of function \code{\link[ecespa]{dixon2002}} of the package \pkg{ecespa}. It includes also a small typo correction of the original code. }
 

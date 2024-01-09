@@ -3,7 +3,8 @@ c-------------------------------------------------------------------
 c
 c  Fortran code included to speed the computation of Dixon (2002) 
 c  NN contingence table indices. 09-14-2010
-c  There remains annotations of the original R code to facilitate debuging
+c  There remains annotations of the original R code to facilitate 
+c  debuging
 c  Author: Marcelino de la Cruz, based in the R code of P.M.Dixon
 c
 c
@@ -12,21 +13,26 @@ c
 
       INTEGER  l1, l2, i, j, i2, j2, kk, posij, posi2j2, posl,posl2 
       DOUBLE PRECISION p2, p3, p4, vp 
-    
-      kk = k*k ! para los loops
-      
-      DO l1= 1,kk !empieza el primer loop    
+c  indicator for loops    
+      kk = k*k 
+c   begins frst loop      
+      DO l1= 1,kk   
 c     for (l1 in 1:(k * k)) {
         i = 1 + (l1 - 1)/k
         j = 1 + MOD(l1 - 1, k)
-        DO l2= l1,kk !empieza el segundo loop    
+c   begins 2nd loop  
+        DO l2= l1,kk    
 c       for (l2 in l1:(k * k)) {
             i2 = 1 + (l2 - 1)/k
             j2 = 1 + MOD(l2 - 1, k)
-            posl = ((l2-1)*k*k)+l1 !posición en las matrices vectorizadas grandes (VN[l1,l2] y VarN[l1,l2])
-            posl2 = ((l1-1)*k*k)+l2 !posición en las matrices vectorizadas grandes (VN[l2,l1] y VarN[l2,l1])  
-            posij =  ((j-1)*k)+i     !posición en las matrices vectorizadas pequeñas (EN[i,j])
-            posi2j2 =  ((j2-1)*k)+i2  !posición en las matrices vectorizadas pequeñas (EN[i2,j2])
+c  position in large vectorized matrices (VN[l1,l2] y VarN[l1,l2])
+            posl = ((l2-1)*k*k)+l1 
+c  position in large vectorized matrices (VN[l2,l1] y VarN[l2,l1])
+            posl2 = ((l1-1)*k*k)+l2
+c position in small vectorized matrices (EN[i,j])
+            posij =  ((j-1)*k)+i     
+c  position in small vectorized matrices (EN[i2,j2])
+            posi2j2 =  ((j2-1)*k)+i2 
 c            if ((i == i2) & (j == j2)) {
           IF (i.eq.i2.and.j.eq.j2.and.i.eq.j) THEN  
 c                if (i == j) {
@@ -34,7 +40,8 @@ c                IF(i.eq.j) THEN
             p2 = SP(i)*(SP(i) - 1)/(N * (N - 1))
             p3 = p2 * (SP(i) - 2)/(N - 2)
             p4 = p3 * (SP(i) - 3)/(N - 3)
-c                  VN[l1,l2]<- 1 # no es necesaria la función check. si el código está bien VN[l1,l2] era 0 antes
+c   
+c                  VN[l1,l2]<- 1 
             VN(posl)=1
       vp=(N+R)*p2+(2*N-2*R+Q)*p3+(N*(N-3)-Q+R)*p4-EN(posij)*EN(posij)
             VarN(posl)=vp
@@ -47,7 +54,7 @@ c                else {
                   p4 = p3 * (SP(j) - 1)/(N - 3)
                   
                   VN(posl) = 2
-              vp=N*p2+Q*p3+(N*(N-3)-Q+R)*p4-EN(posij)*EN(posij)            
+              vp=N*p2+Q*p3+(N*(N-3)-Q+R)*p4-EN(posij)*EN(posij)
               
               VarN(posl)=vp 
 c            END IF
@@ -59,8 +66,8 @@ c            else if ((i == j) & (i == i2) & (j != j2)) {
      +                  (N - 2))
                 p4 = p3 * (SP(i) - 2)/(N - 3)
                 VN(posl) = 3
-      vp=(N-R)*p3+(N*(N-3)-Q+R)*p4
-     +                                    - EN(posij)*EN(posi2j2)
+                vp=(N-R)*p3+(N*(N-3)-Q+R)*p4
+     +               - EN(posij)*EN(posi2j2)
              VarN(posl)= vp   
              VarN(posl2)=vp 
 c            }
@@ -84,7 +91,7 @@ c            else if ((i2 == j2) & (j == j2) & (i != i2)) {
                 p4 = p3 * (SP(j) - 2)/(N - 3)
                 VN(posl) = 4  
                 vp= (N-R+Q)*p3 + (N*(N-3)-Q+R)*p4
-     +                                    - EN(posij)*EN(posi2j2)
+     +               - EN(posij)*EN(posi2j2)
              VarN(posl)= vp   
              VarN(posl2)=vp 
 
@@ -95,9 +102,11 @@ c            else if ((i == j) & (i == j2) & (i != i2)) {
      +            (N - 2))
                 p4 = p3 * (SP(i) - 2)/(N - 3)
                 VN(posl) = 4
-c               VN(posl) = 14 !!! OJO, This looks as a typo in the original R code.Probably it meaned VN[l1,l2] <- 4 instead of <- 14
+c  !!! OJO, This looks as a typo in the original R code.
+c   Probably it meaned VN[l1,l2] <- 4 instead of <- 14  
+c                   VN(posl) = 14 
                 vp= (N-R+Q)*p3 + (N *(N-3)-Q+R)*p4  
-     +                                   -EN(posij)*EN(posi2j2)
+     +                 -EN(posij)*EN(posi2j2)
              VarN(posl)= vp   
              VarN(posl2)=vp 
 
@@ -105,7 +114,7 @@ c            }
 c            else if ((i == j) & (i2 == j2) & (i != i2)) {
              ELSE IF(i.eq.j.and.i2.eq.j2.and.i.ne.i2) THEN  
 c                 
-            p4 =SP(i)*(SP(i)-1)*SP(i2)*(SP(i2)-1)/(N*(N-1)*(N-2)*(N-3))
+	    p4 =SP(i)*(SP(i)-1)*SP(i2)*(SP(i2)-1)/(N*(N-1)*(N-2)*(N-3))
                 VN(posl)= 5
 
                 vp=  (N*(N-3)-Q+R)*p4-EN(posij)*EN(posi2j2)
@@ -134,8 +143,8 @@ c            else if ((i2 == j2) & (i2 != i) & (j2 != j) & (i !=  j)) {
 
 c            }
 c            else if ((i == i2) & (i != j) & (i2 != j2) & (j != j2)) {
-             ELSE IF(i.eq.i2.and.i.ne.j.and.i2.ne.j2.and.j.ne.j2) THEN  
-c                              
+             ELSE IF(i.eq.i2.and.i.ne.j.and.i2.ne.j2.and.j.ne.j2) THEN
+c
                 p4 = SP(i) * (SP(i) - 1) * SP(j) * SP(j2)/(N * (N - 
      +            1) * (N - 2) * (N - 3))
                 VN(posl)= 7  
@@ -157,7 +166,7 @@ c            else if ((i == j2) & (i2 == j) & (i != j)) {
 
 c            }
 c            else if ((i != j) & (j == i2) & (i2 != j2) & (i != j2)) {
-             ELSE IF(i.ne.j.and.j.eq.i2.and.i2.ne.j2.and.i.ne.j2) THEN  
+             ELSE IF(i.ne.j.and.j.eq.i2.and.i2.ne.j2.and.i.ne.j2) THEN
                 p3 = SP(i) * SP(j) * SP(j2)/(N * (N - 1) * (N - 2))
                 p4 = p3 * (SP(j) - 1)/(N - 3)
                 VN(posl)= 9  
@@ -167,8 +176,8 @@ c            else if ((i != j) & (j == i2) & (i2 != j2) & (i != j2)) {
              VarN(posl2)=vp 
 
 c            }
-c            else if ((i != j) & (j == j2) & (i2 != j2) & (i != i2)) {
-             ELSE IF(i.ne.j.and.j.eq.j2.and.i2.ne.j2.and.i.ne.i2) THEN  
+c            else if ((i != j) & (j == j2) & (i2 != j2) & (i != i2)){
+             ELSE IF(i.ne.j.and.j.eq.j2.and.i2.ne.j2.and.i.ne.i2) THEN
                 p3 = SP(i) * SP(j) * SP(i2)/(N * (N - 1) * (N - 2))
                 p4 = p3 * (SP(j) - 1)/(N - 3)
                 VN(posl)= 10  
@@ -178,18 +187,20 @@ c            else if ((i != j) & (j == j2) & (i2 != j2) & (i != i2)) {
              VarN(posl2)=vp 
 
 c            }
-c            else if ((i != j) & (i == j2) & (i2 != j2) & (j !=  i2)) {
-             ELSE IF(i.ne.j.and.i.eq.j2.and.i2.ne.j2.and.j.ne.i2) THEN  
+c            else if ((i != j) & (i == j2) &
+c                     (i2 != j2) & (j !=  i2)) {
+             ELSE IF(i.ne.j.and.i.eq.j2.and.i2.ne.j2.and.j.ne.i2) THEN
                 p3 = SP(i) * SP(j) * SP(i2)/(N * (N - 1) * (N - 2))
                 p4 = p3 * (SP(i) - 1)/(N - 3)
                 VN(posl)= 11  
                 vp=(N-R)*p3 +(N *(N-3)-Q+R)*p4
-     +                                  -EN(posij)*EN(posi2j2)
+     +              -EN(posij)*EN(posi2j2)
              VarN(posl)= vp   
              VarN(posl2)=vp 
 
 c            }
-c            else if ((i != j) & (i != i2) & (i != j2) & (j != i2) & (j != j2) & (i2 != j2)) {
+c            else if ((i != j) & (i != i2) & (i != j2) & (j != i2) &
+c                     (j != j2) & (i2 != j2)) {
              ELSE IF(i.ne.j.and.i.ne.i2.and.i.ne.j2.and.j.ne.i2.
      +               and.j.ne.j2.and.i2.ne.j2) THEN  
 c                      
@@ -201,8 +212,10 @@ c
 
 c            }
              END IF
-        END DO  !acaba el segundo loop
-      END DO !acaba el primer loop 
+c       ends 2nd loop
+        END DO
+c     ends 1st loop
+      END DO
       RETURN
       END
       

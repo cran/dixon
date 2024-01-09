@@ -1,8 +1,8 @@
 Package: dixon
 Type: Package
 Title: Nearest Neighbour Contingency Table Analysis
-Version: 0.0-8
-Date: 2022-02-124
+Version: 0.0-9
+Date: 2024-01-08
 Author: Marcelino de la Cruz Rot and Philip M. Dixon
 Maintainer: Marcelino de la Cruz Rot <marcelino.delacruz@urjc.es>
 Depends: splancs, spatstat.geom, spatstat (>= 2.0-0)
@@ -12,6 +12,6 @@ License: GPL (>= 2)
 LazyLoad: yes
 LazyData: yes
 NeedsCompilation: yes
-Packaged: 2022-02-12 14:30:17 UTC; marcelino
+Packaged: 2024-01-08 07:49:02 UTC; marcelino
 Repository: CRAN
-Date/Publication: 2022-02-12 18:20:02 UTC
+Date/Publication: 2024-01-09 08:50:02 UTC
